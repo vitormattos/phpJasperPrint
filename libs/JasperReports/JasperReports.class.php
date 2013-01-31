@@ -95,7 +95,8 @@ class JasperReports {
 		if ( !file_exists($jasperReport) ) {
 			return $this->setError("Arquivo [$jasperReport] nao encontrado.");
 		}
-		$extension = end(explode('.', $jasperReport));
+		$array = explode('.', $jasperReport);
+		$extension = end($array);
 		$accept = array('jrxml', 'jasper');
 		if(!in_array($extension, $accept) || !file_exists($jasperReport) ) {
 			return $this->setError(
@@ -219,7 +220,8 @@ class JasperReports {
 		$JasperExportManager = new JavaClass(
 			'net.sf.jasperreports.engine.JasperExportManager'
 		);
-		$extension = end(explode('.', $fileName));
+		$array = explode('.', $fileName);
+		$extension = end($array);
 		$extension = $extension?:'pdf';
 		$contentType = $contentType?:'application/'.$extension;
 		if(!$fileName) $fileName = md5($stream) . '.' . $extension;
