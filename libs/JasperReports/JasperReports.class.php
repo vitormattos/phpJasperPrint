@@ -222,8 +222,8 @@ class JasperReports {
 		);
 		$array = explode('.', $fileName);
 		$extension = end($array);
-		$extension = $extension?:'pdf';
-		$contentType = $contentType?:'application/'.$extension;
+		$extension = $extension?$extension:'pdf';
+		$contentType = $contentType?$contentType:'application/'.$extension;
 		if(!$fileName) $fileName = md5($stream) . '.' . $extension;
 		try {
 			$method = 'exportReportTo' . ucwords($extension) . 'File';
